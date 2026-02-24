@@ -355,7 +355,7 @@ const Features = () => {
             Why cats are gurus
           </span>
           <h2 className="font-heading text-foreground text-3xl font-bold md:text-4xl">
-            Service
+            Nos Service
           </h2>
         </div>
 
