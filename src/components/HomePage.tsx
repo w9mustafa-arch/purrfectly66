@@ -5,8 +5,8 @@ import {
   MessageCircleMore,
   Clock,
   ShieldCheck,
-  MapPin,
   Star,
+  MapPin,
 } from "lucide-react";
 
 export default function Home() {
@@ -24,7 +24,7 @@ export default function Home() {
           <div className="hidden md:flex gap-8 font-medium">
             <a href="#services">Services</a>
             <a href="#how">Comment ça marche</a>
-            <a href="#zones">Zones</a>
+            <a href="#faq">FAQ</a>
           </div>
 
           <a
@@ -37,16 +37,20 @@ export default function Home() {
       </nav>
 
       {/* HERO */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+      <section className="py-24 px-6">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
 
           <div>
-            <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-5xl font-bold leading-tight mb-6"
+            >
               Livraison rapide à Marrakech en moins de 30 min
-            </h1>
+            </motion.h1>
 
             <p className="text-gray-600 mb-8 text-lg">
-              Commandez repas, médicaments ou courses avec un service fiable disponible 24h/24.
+              Repas, médicaments et courses livrés rapidement avec un service fiable disponible 24h/24.
             </p>
 
             <div className="flex gap-4">
@@ -82,80 +86,83 @@ export default function Home() {
         </div>
       </section>
 
+      {/* STATS */}
+      <section className="bg-gray-50 py-16">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-3 text-center gap-8">
+          <Stat number="500+" label="Livraisons réussies" />
+          <Stat number="30 min" label="Temps moyen" />
+          <Stat number="24h/24" label="Disponibilité" />
+        </div>
+      </section>
+
       {/* SERVICES */}
-      <section id="services" className="bg-gray-50 py-20 px-6">
-        <div className="max-w-7xl mx-auto text-center mb-12">
+      <section id="services" className="py-24 px-6">
+        <div className="text-center mb-12">
           <h2 className="text-3xl font-bold">Nos Services</h2>
-          <p className="text-gray-500 mt-2">Tout ce dont vous avez besoin livré rapidement</p>
+          <p className="text-gray-500">Tout livré rapidement</p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-
-          <ServiceCard
-            title="Livraison de repas"
-            desc="Commandez depuis votre restaurant préféré."
-          />
-
-          <ServiceCard
-            title="Livraison de médicaments"
-            desc="Service rapide et sécurisé depuis votre pharmacie."
-          />
-
-          <ServiceCard
-            title="Courses & shopping"
-            desc="Nous faisons vos courses et livrons à domicile."
-          />
-
+        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+          <Service title="Livraison de repas" desc="Depuis votre restaurant préféré." />
+          <Service title="Livraison médicaments" desc="Rapide et sécurisé." />
+          <Service title="Courses & shopping" desc="Nous faisons vos achats." />
         </div>
       </section>
 
-      {/* HOW IT WORKS */}
-      <section id="how" className="py-20 px-6">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-12">Comment ça marche</h2>
+      {/* HOW */}
+      <section id="how" className="bg-gray-50 py-24 px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold">Comment ça marche</h2>
+        </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-
-            <Step number="1" title="Envoyez votre commande" />
-            <Step number="2" title="Confirmation rapide" />
-            <Step number="3" title="Livraison chez vous" />
-
-          </div>
+        <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
+          <Step number="1" title="Envoyez votre commande" />
+          <Step number="2" title="Confirmation rapide" />
+          <Step number="3" title="Livraison chez vous" />
         </div>
       </section>
 
-      {/* ZONES */}
-      <section id="zones" className="bg-gray-50 py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <MapPin className="mx-auto mb-4 text-green-600" size={40} />
-          <h2 className="text-3xl font-bold mb-4">Zones desservies</h2>
-          <p className="text-gray-600">
-            Livraison disponible dans toute la ville de Marrakech et ses environs.
-          </p>
+      {/* TESTIMONIALS */}
+      <section className="py-24 px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold">Avis clients</h2>
+        </div>
+
+        <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
+          <Testimonial name="Ahmed" text="Service rapide et professionnel." />
+          <Testimonial name="Sara" text="Meilleur livreur à Marrakech !" />
+          <Testimonial name="Youssef" text="Très fiable et ponctuel." />
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section id="faq" className="bg-gray-50 py-24 px-6">
+        <div className="max-w-3xl mx-auto space-y-6">
+          <h2 className="text-3xl font-bold text-center mb-8">FAQ</h2>
+
+          <Faq q="Temps de livraison ?" a="En moyenne 30 minutes." />
+          <Faq q="Disponible la nuit ?" a="Oui service 24h/24." />
+          <Faq q="Zones couvertes ?" a="Toute la ville de Marrakech." />
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-6 text-center">
+      <section className="py-24 text-center px-6">
         <h2 className="text-3xl font-bold mb-4">
           Besoin d’une livraison rapide ?
         </h2>
-
-        <p className="text-gray-600 mb-8">
-          Contactez-nous maintenant et recevez votre commande rapidement.
-        </p>
 
         <a
           href="https://wa.me/212600000000"
           className="bg-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow hover:bg-green-700"
         >
-          Commander sur WhatsApp
+          Commander maintenant
         </a>
       </section>
 
       {/* FOOTER */}
       <footer className="border-t py-8 text-center text-gray-500 text-sm">
-        © {new Date().getFullYear()} Livreur Marrakech — Service de livraison rapide
+        © {new Date().getFullYear()} Livreur Marrakech
       </footer>
 
     </div>
@@ -164,7 +171,7 @@ export default function Home() {
 
 /* COMPONENTS */
 
-function ServiceCard({ title, desc }) {
+function Service({ title, desc }) {
   return (
     <div className="bg-white rounded-2xl shadow p-8 text-center hover:shadow-lg transition">
       <h3 className="font-bold text-xl mb-3">{title}</h3>
@@ -175,9 +182,36 @@ function ServiceCard({ title, desc }) {
 
 function Step({ number, title }) {
   return (
-    <div className="bg-white shadow rounded-2xl p-8">
+    <div className="bg-white shadow rounded-2xl p-8 text-center">
       <div className="text-green-600 text-3xl font-bold mb-3">{number}</div>
       <p className="font-semibold">{title}</p>
+    </div>
+  );
+}
+
+function Testimonial({ name, text }) {
+  return (
+    <div className="bg-white shadow rounded-2xl p-6 text-center">
+      <p className="italic mb-3">"{text}"</p>
+      <p className="font-bold">{name}</p>
+    </div>
+  );
+}
+
+function Faq({ q, a }) {
+  return (
+    <div className="bg-white shadow rounded-xl p-6">
+      <p className="font-semibold">{q}</p>
+      <p className="text-gray-500">{a}</p>
+    </div>
+  );
+}
+
+function Stat({ number, label }) {
+  return (
+    <div>
+      <p className="text-3xl font-bold text-green-600">{number}</p>
+      <p className="text-gray-500">{label}</p>
     </div>
   );
 }
