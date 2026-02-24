@@ -190,7 +190,7 @@ const Hero = () => {
           <span className="font-hand text-primary mb-4 inline-block -rotate-2 text-2xl">
             Bienvenue à Marrakech!
           </span>
-          <h1 className="font-heading text-foreground mb-6 text-3xl leading-[1.1] font-bold md:text-5xl">
+          <h1 className="font-heading text-foreground mb-6 text-4xl leading-[1.1] font-bold md:text-5xl">
             Votre livreur rapide à{' '}
             <span className="text-primary relative inline-block">
               Marrakech
@@ -206,9 +206,7 @@ const Hero = () => {
                   fill="none"
                 />
               </svg>
-            </span>{' '}
-            <br />
-            with a cat!
+            </span>
           </h1>
           <p className="text-muted-foreground max-w-md text-lg leading-relaxed md:text-xl">
              Avec Livreur Marrakech, recevez vos Médicaments, Repas et Courses 24h/24 partout dans la ville.
@@ -356,7 +354,7 @@ const Features = () => {
           <span className="font-hand text-primary text-xl">
             Why cats are gurus
           </span>
-          <h2 className="font-heading text-foreground text-4xl font-bold md:text-5xl">
+          <h2 className="font-heading text-foreground text-3xl font-bold md:text-4xl">
             The Way of the Meow
           </h2>
         </div>
