@@ -220,11 +220,11 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             {[
-              { icon: Hamburger, label: 'Repas', color: 'text-yellow-600' },
-              { icon: Pill, label: 'Médicaments', color: 'text-green-600' },
+              { icon: Hamburger, label: 'Repas frais', color: 'text-yellow-600' },
+              { icon: Pill, label: 'Livraison de médicaments', color: 'text-green-600' },
               {
                 icon: ShoppingCart,
-                label: 'Courses',
+                label: 'Courses du quotidien',
                 color: 'text-purple-600',
               },
               { icon: Clock, label: 'Disponible 24h/24', color: 'text-red-600' },
