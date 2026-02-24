@@ -221,10 +221,10 @@ const Hero = () => {
           >
             {[
               { icon: Hamburger, label: 'Repas frais', color: 'text-yellow-600' },
-              { icon: Pill, label: 'Livraison de médicaments', color: 'text-green-600' },
+              { icon: Pill, label: 'Livraison de Médicaments', color: 'text-green-600' },
               {
                 icon: ShoppingCart,
-                label: 'Courses du quotidien',
+                label: 'Courses rapides',
                 color: 'text-purple-600',
               },
               { icon: Clock, label: 'Disponible 24h/24', color: 'text-red-600' },
