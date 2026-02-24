@@ -53,7 +53,7 @@ const Navigation = () => {
       >
         <PawPrint className="h-8 w-8" />
         <span className="font-heading text-foreground text-2xl font-bold">
-          Purrfectly Zen
+          Purrfectly musa
         </span>
       </a>
 
