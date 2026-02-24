@@ -292,7 +292,7 @@ const Hero = () => {
 
   <div>
     <p className="text-sm font-bold text-gray-800">Appeler</p>
-    <p className="text-xs text-gray-500">Disponible 24h</p>
+    <p className="text-xs text-gray-500">Disponible 24h/24</p>
   </div>
 </motion.a>
         </motion.div>
@@ -355,7 +355,7 @@ const Features = () => {
             Why cats are gurus
           </span>
           <h2 className="font-heading text-foreground text-3xl font-bold md:text-4xl">
-            The Way of the Meow
+            Service
           </h2>
         </div>
 
