@@ -13,7 +13,7 @@ import {
   CheckCircle,
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { Phone, MessageCircle } from 'lucide-react';
+import { Phone, MessageCircleMore } from 'lucide-react';
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -270,7 +270,7 @@ const Hero = () => {
   className="group bg-white absolute -bottom-8 -left-4 flex items-center gap-3 rounded-2xl px-5 py-3 shadow-xl border border-gray-200 md:left-10 hover:shadow-2xl hover:-translate-y-1 transition-all"
 >
   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-500 text-white">
-    <MessageCircle size={20} />
+    <MessageCircleMore size={20} />
   </div>
 
   <div>
