@@ -4,7 +4,7 @@ import {
   Sparkles,
   Menu,
   X,
-  PawPrint,
+  MapPinHouse,
   Users,
   BookOpen,
   Compass,
@@ -13,7 +13,7 @@ import {
   CheckCircle,
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
-
+import { Phone, MessageCircle } from 'lucide-react';
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -51,9 +51,9 @@ const Navigation = () => {
         href="/"
         className="text-primary flex items-center gap-3 transition-opacity hover:opacity-80"
       >
-        <PawPrint className="h-8 w-8" />
+        <MapPinHouse className="h-8 w-8" />
         <span className="font-heading text-foreground text-2xl font-bold">
-          Purrfectly musa
+          Livreur Marrakech
         </span>
       </a>
 
@@ -188,12 +188,12 @@ const Hero = () => {
           transition={{ duration: 0.6 }}
         >
           <span className="font-hand text-primary mb-4 inline-block -rotate-2 text-2xl">
-            Welcome home, human!
+            Bienvenue à Marrakech!
           </span>
           <h1 className="font-heading text-foreground mb-6 text-5xl leading-[1.1] font-bold md:text-7xl">
-            Let's find your inner{' '}
+            Votre livreur rapide à{' '}
             <span className="text-primary relative inline-block">
-              Zen
+              Marrakech
               <svg
                 className="text-accent absolute -bottom-1 left-0 -z-10 h-3 w-full"
                 viewBox="0 0 100 10"
@@ -211,8 +211,7 @@ const Hero = () => {
             with a cat!
           </h1>
           <p className="text-muted-foreground max-w-md text-lg leading-relaxed md:text-xl">
-            The purrfect place to disconnect from the noise and reconnect with
-            what matters: peace, presence, and gentle purrs.
+             Avec Livreur Marrakech, recevez vos Médicaments, Repas et Courses 24h/24 partout dans la ville.
           </p>
 
           {/* Trust Badges */}
@@ -264,40 +263,40 @@ const Hero = () => {
             className="h-auto w-full transform rounded-[3rem] shadow-2xl transition-transform duration-700 hover:rotate-0 md:rotate-3"
           />
 
-          {/* Floating Cards */}
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
-            className="bg-card absolute -bottom-8 -left-4 flex max-w-[200px] items-center gap-3 rounded-2xl p-4 shadow-lg md:left-10"
-          >
-            <div className="rounded-full bg-green-100 p-2 text-green-600">
-              <Sparkles size={20} />
-            </div>
-            <div>
-              <p className="text-sm font-bold">99% Stress Free!</p>
-              <p className="text-muted-foreground text-xs">Guaranteed purrs</p>
-            </div>
-          </motion.div>
+          {/* WhatsApp Button */}
+<motion.a
+  href="https://wa.me/212600000000"
+  target="_blank"
+  animate={{ y: [0, -8, 0] }}
+  transition={{ repeat: Infinity, duration: 3.5, ease: 'easeInOut' }}
+  className="group bg-white absolute -bottom-8 -left-4 flex items-center gap-3 rounded-2xl px-5 py-3 shadow-xl border border-gray-200 md:left-10 hover:shadow-2xl hover:-translate-y-1 transition-all"
+>
+  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-500 text-white">
+    <MessageCircle size={20} />
+  </div>
 
-          {/* Second Badge */}
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{
-              repeat: Infinity,
-              duration: 4,
-              ease: 'easeInOut',
-              delay: 0.5,
-            }}
-            className="bg-card absolute -top-4 -right-4 flex max-w-[200px] items-center gap-3 rounded-2xl p-4 shadow-lg md:-right-8"
-          >
-            <div className="rounded-full bg-blue-100 p-2 text-blue-600">
-              <Users size={20} />
-            </div>
-            <div>
-              <p className="text-sm font-bold">500K+ Members</p>
-              <p className="text-muted-foreground text-xs">Growing community</p>
-            </div>
-          </motion.div>
+  <div>
+    <p className="text-sm font-bold text-gray-800">WhatsApp</p>
+    <p className="text-xs text-gray-500">Envoyer un message</p>
+  </div>
+</motion.a>
+
+{/* Call Button */}
+<motion.a
+  href="tel:+212600000000"
+  animate={{ y: [0, 8, 0] }}
+  transition={{ repeat: Infinity, duration: 3.5, ease: 'easeInOut', delay: 0.4 }}
+  className="group bg-white absolute -top-4 -right-4 flex items-center gap-3 rounded-2xl px-5 py-3 shadow-xl border border-gray-200 md:-right-8 hover:shadow-2xl hover:-translate-y-1 transition-all"
+>
+  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500 text-white">
+    <Phone size={20} />
+  </div>
+
+  <div>
+    <p className="text-sm font-bold text-gray-800">Appeler</p>
+    <p className="text-xs text-gray-500">Disponible 24h</p>
+  </div>
+</motion.a>
         </motion.div>
       </div>
     </section>
@@ -396,7 +395,7 @@ const Community = () => {
       name: 'Sarah Chen',
       role: 'Meditation Teacher',
       quote:
-        'Purrfectly Zen completely transformed how I view mindfulness. My cat approves too.',
+        'Purrfectly momo completely transformed how I view mindfulness. My cat approves too.',
       image: '/images/sarah_chen_meditation_teacher_portrait.png',
     },
     {
@@ -509,9 +508,9 @@ export const Footer = () => {
             className="flex flex-col justify-center space-y-3"
           >
             <div className="flex items-center gap-3">
-              <PawPrint className="text-primary h-7 w-7" />
+              <MapPinHouse className="text-primary h-7 w-7" />
               <h3 className="font-heading text-foreground text-lg font-bold">
-                Purrfectly Zen
+                Livreur Marrakech
               </h3>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
