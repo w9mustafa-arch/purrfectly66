@@ -13,7 +13,7 @@ import {
   CheckCircle,
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { Phone, MessageCircleMore } from 'lucide-react';
+import { Phone, MessageCircleMore, Hamburger, Pill, ShoppingCart, Clock } from 'lucide-react';
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -220,14 +220,14 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             {[
-              { icon: Star, label: '5 Rated', color: 'text-yellow-600' },
-              { icon: Lock, label: '100% Free', color: 'text-green-600' },
+              { icon: Hamburger, label: 'Repas', color: 'text-yellow-600' },
+              { icon: Pill, label: 'Médicaments', color: 'text-green-600' },
               {
-                icon: CheckCircle,
-                label: 'Science-Backed',
+                icon: ShoppingCart,
+                label: 'Courses',
                 color: 'text-purple-600',
               },
-              { icon: Heart, label: 'Community Loved', color: 'text-red-600' },
+              { icon: Clock, label: 'Disponible 24h/24', color: 'text-red-600' },
             ].map((badge, idx) => (
               <motion.div
                 key={idx}
