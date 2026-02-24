@@ -192,7 +192,7 @@ const Hero = () => {
           </span>
           <h1 className="font-heading text-foreground mb-6 text-4xl leading-[1.1] font-bold md:text-5xl">
             Votre livreur rapide à{' '}
-            <span className="text-primary relative inline-block">
+            <span className="text-foreground relative inline-block">
               Marrakech
               <svg
                 className="text-accent absolute -bottom-1 left-0 -z-10 h-3 w-full"
