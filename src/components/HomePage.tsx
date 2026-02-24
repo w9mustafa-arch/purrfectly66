@@ -4,7 +4,7 @@ import {
   Sparkles,
   Menu,
   X,
-  MapPinHouse,
+  Motorbike,
   Users,
   BookOpen,
   Compass,
@@ -51,7 +51,7 @@ const Navigation = () => {
         href="/"
         className="text-primary flex items-center gap-3 transition-opacity hover:opacity-80"
       >
-        <MapPinHouse className="h-8 w-8" />
+        <Motorbike className="h-8 w-8" />
         <span className="font-heading text-foreground text-2xl font-bold">
           Livreur Marrakech
         </span>
@@ -506,7 +506,7 @@ export const Footer = () => {
             className="flex flex-col justify-center space-y-3"
           >
             <div className="flex items-center gap-3">
-              <MapPinHouse className="text-primary h-7 w-7" />
+              <Motorbike className="text-primary h-7 w-7" />
               <h3 className="font-heading text-foreground text-lg font-bold">
                 Livreur Marrakech
               </h3>
