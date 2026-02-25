@@ -413,7 +413,7 @@ const Community = () => {
   ];
 
   return (
-    <section id="community" className="relative px-6 py-24 md:px-12 lg:px-24">
+    <section id="community" className="relative bg-[hsl(0_0%_89%)] px-6 py-24 md:px-12 lg:px-24">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 space-y-4 text-center">
           <span className="font-hand text-primary text-xl">
