@@ -513,7 +513,10 @@ const QuoteSection = () => {
   );
 };
 
-const MapSection = () => {
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
+
+const MapSectionPro = () => {
   const [location, setLocation] = useState("Marrakech Morocco");
   const [loading, setLoading] = useState(false);
 
@@ -546,7 +549,6 @@ const MapSection = () => {
   return (
     <section id="zones" className="bg-[hsl(0_0%_99%)] px-6 py-24 md:px-12 lg:px-24">
       <div className="mx-auto max-w-7xl">
-
         {/* Title */}
         <div className="mb-12 text-center">
           <h2 className="font-heading text-foreground text-4xl font-bold md:text-5xl">
@@ -557,10 +559,11 @@ const MapSection = () => {
           </p>
         </div>
 
-        {/* Desktop Layout: Buttons left, Map right */}
+        {/* Desktop Layout */}
         <div className="flex flex-col gap-6 md:flex-row md:gap-8">
           {/* Buttons */}
-          <div className="flex flex-wrap justify-center gap-3 md:flex-col md:w-1/4 md:justify-start">
+          <div className="flex flex-wrap justify-center gap-3 md:flex-col md:w-1/4 md:justify-start
+                          md:max-h-[450px] md:overflow-y-auto">
             {areas.map((area, idx) => {
               const isActive = location === area;
               return (
@@ -630,7 +633,6 @@ const MapSection = () => {
             Livraison disponible à {location.replace(" Marrakech", "").replace(" Morocco", "")} ✅
           </p>
         </motion.div>
-
       </div>
     </section>
   );
@@ -798,7 +800,7 @@ export default function Home() {
       <Features />
       <Community />
       <QuoteSection />
-      <MapSection />
+      <MapSectionPro />
       <section id="cta" className="px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <motion.div
