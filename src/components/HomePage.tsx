@@ -515,8 +515,10 @@ const QuoteSection = () => {
 
 const MapSection = () => {
   const [location, setLocation] = useState("Marrakech Morocco");
+  const [loading, setLoading] = useState(false);
 
   const areas = [
+    "Marrakech Morocco",
     "Gueliz Marrakech",
     "Medina Marrakech",
     "Hivernage Marrakech",
@@ -535,35 +537,75 @@ const MapSection = () => {
     "Bab Doukkala Marrakech",
   ];
 
+  const changeLocation = (area: string) => {
+    setLoading(true);
+    setLocation(area);
+    setTimeout(() => setLoading(false), 500);
+  };
+
   return (
     <section id="zones" className="bg-[hsl(0_0%_99%)] px-6 py-24 md:px-12 lg:px-24">
       <div className="mx-auto max-w-7xl">
 
+        {/* Title */}
         <div className="mb-12 text-center">
-          <h2 className="font-heading text-foreground text-4xl font-bold">
+          <h2 className="font-heading text-foreground text-4xl font-bold md:text-5xl">
             Zones de Livraison
           </h2>
-          <p className="text-muted-foreground mt-2">
-            Cliquez sur votre quartier pour vérifier la disponibilité
+          <p className="text-muted-foreground mt-3">
+            Vérifiez rapidement si la livraison est disponible dans votre quartier
           </p>
         </div>
 
         {/* Buttons */}
-        <div className="mb-10 flex flex-wrap justify-center gap-3">
-          {areas.map((area, idx) => (
-            <button
-              key={idx}
-              onClick={() => setLocation(area)}
-              className="bg-primary/10 hover:bg-primary hover:text-white rounded-full px-4 py-2 text-sm font-semibold transition-all"
-            >
-              {area.replace(" Marrakech", "")}
-            </button>
-          ))}
+        <div className="mb-10 flex flex-wrap justify-center gap-3 md:gap-4">
+          {areas.map((area, idx) => {
+            const isActive = location === area;
+            return (
+              <motion.button
+                key={idx}
+                onClick={() => changeLocation(area)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={`rounded-full px-4 py-2 text-sm font-semibold transition-all shadow-sm
+                  ${
+                    isActive
+                      ? "bg-primary text-white shadow-lg"
+                      : "bg-primary/10 hover:bg-primary hover:text-white"
+                  }
+                `}
+              >
+                {area.replace(" Marrakech", "").replace(" Morocco", "")}
+              </motion.button>
+            );
+          })}
         </div>
 
-        {/* Map */}
-        <div className="overflow-hidden rounded-2xl shadow-xl border border-border/40">
-          <iframe
+        {/* Map Container */}
+        <div className="relative overflow-hidden rounded-3xl border border-border/40 shadow-xl">
+
+          {/* Loading Overlay */}
+          <AnimatePresence>
+            {loading && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="absolute inset-0 z-10 flex items-center justify-center bg-white/70 backdrop-blur-sm"
+              >
+                <div className="animate-pulse text-primary font-bold">
+                  Chargement de la carte...
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Map */}
+          <motion.iframe
+            key={location}
+            initial={{ opacity: 0.5, scale: 1.02 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4 }}
             title="map"
             width="100%"
             height="450"
@@ -572,15 +614,20 @@ const MapSection = () => {
             src={`https://www.google.com/maps?q=${encodeURIComponent(
               location
             )}&output=embed`}
-          ></iframe>
+          ></motion.iframe>
         </div>
 
         {/* Status */}
-        <div className="mt-6 text-center">
+        <motion.div
+          key={location + "-status"}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mt-6 text-center"
+        >
           <p className="font-heading text-primary text-lg font-bold">
-            Livraison disponible à {location.replace(" Marrakech", "")} ✅
+            Livraison disponible à {location.replace(" Marrakech", "").replace(" Morocco", "")} ✅
           </p>
-        </div>
+        </motion.div>
 
       </div>
     </section>
