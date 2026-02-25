@@ -53,7 +53,7 @@ const Navigation = () => {
       >
         <Motorbike className="h-8 w-8" />
         <span className="font-heading text-foreground text-2xl font-bold">
-          Livreur Marrakech
+          Livreur Marrakech2
         </span>
       </a>
 
