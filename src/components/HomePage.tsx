@@ -563,8 +563,6 @@ const DeliveryMap = () => {
   );
 };
 
-export default DeliveryMap;
-
 export const Footer = () => {
   return (
     <footer className="from-secondary/5 via-background to-primary/5 border-border/40 relative border-t bg-gradient-to-br px-6 py-16">
