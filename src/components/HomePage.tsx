@@ -538,17 +538,15 @@ const MapSection = () => {
   ];
 
   const changeLocation = (area: string) => {
-    if (area === location) return;
     setLoading(true);
-    setTimeout(() => {
-      setLocation(area);
-      setLoading(false);
-    }, 500);
+    setLocation(area);
+    setTimeout(() => setLoading(false), 500);
   };
 
   return (
-    <section className="bg-[hsl(0_0%_99%)] px-6 py-24 md:px-12 lg:px-24">
+    <section id="zones" className="bg-[hsl(0_0%_99%)] px-6 py-24 md:px-12 lg:px-24">
       <div className="mx-auto max-w-7xl">
+
         {/* Title */}
         <div className="mb-12 text-center">
           <h2 className="font-heading text-foreground text-4xl font-bold md:text-5xl">
@@ -559,10 +557,10 @@ const MapSection = () => {
           </p>
         </div>
 
-        {/* Buttons + Map */}
-        <div className="flex flex-col md:flex-row gap-6">
-          {/* Buttons Horizontal Scroll */}
-          <div className="flex overflow-x-auto gap-3 md:flex-col md:w-1/4 md:overflow-visible">
+        {/* Desktop Layout: Buttons left, Map right */}
+        <div className="flex flex-col gap-6 md:flex-row md:gap-8">
+          {/* Buttons */}
+          <div className="flex flex-wrap justify-center gap-3 md:flex-col md:w-1/4 md:justify-start">
             {areas.map((area, idx) => {
               const isActive = location === area;
               return (
@@ -571,11 +569,13 @@ const MapSection = () => {
                   onClick={() => changeLocation(area)}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`flex-shrink-0 rounded-full px-4 py-2 text-sm font-semibold transition-all shadow-sm whitespace-nowrap
-                    ${isActive
-                      ? "bg-primary text-white shadow-lg"
-                      : "bg-primary/10 hover:bg-primary hover:text-white"
-                    }`}
+                  className={`rounded-full px-4 py-2 text-sm font-semibold transition-all shadow-sm
+                    ${
+                      isActive
+                        ? "bg-primary text-white shadow-lg"
+                        : "bg-primary/10 hover:bg-primary hover:text-white"
+                    }
+                  `}
                 >
                   {area.replace(" Marrakech", "").replace(" Morocco", "")}
                 </motion.button>
@@ -583,8 +583,8 @@ const MapSection = () => {
             })}
           </div>
 
-          {/* Map */}
-          <div className="relative overflow-hidden rounded-3xl border border-border/40 shadow-xl md:ml-8 md:flex-1">
+          {/* Map Container */}
+          <div className="relative overflow-hidden rounded-3xl border border-border/40 shadow-xl md:w-3/4">
             {/* Loading Overlay */}
             <AnimatePresence>
               {loading && (
@@ -601,20 +601,21 @@ const MapSection = () => {
               )}
             </AnimatePresence>
 
-            {/* Smooth fade animation for map */}
+            {/* Map */}
             <motion.iframe
               key={location}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0.5, scale: 1.02 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4 }}
               title="map"
               width="100%"
               height="450"
               style={{ border: 0 }}
               loading="lazy"
-              src={`https://www.google.com/maps?q=${encodeURIComponent(location)}&output=embed`}
-            />
+              src={`https://www.google.com/maps?q=${encodeURIComponent(
+                location
+              )}&output=embed`}
+            ></motion.iframe>
           </div>
         </div>
 
@@ -629,6 +630,7 @@ const MapSection = () => {
             Livraison disponible à {location.replace(" Marrakech", "").replace(" Morocco", "")} ✅
           </p>
         </motion.div>
+
       </div>
     </section>
   );
