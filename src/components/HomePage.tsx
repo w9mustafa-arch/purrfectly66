@@ -538,9 +538,12 @@ const MapSection = () => {
   ];
 
   const changeLocation = (area: string) => {
+    if (area === location) return;
     setLoading(true);
-    setLocation(area);
-    setTimeout(() => setLoading(false), 500);
+    setTimeout(() => {
+      setLocation(area);
+      setLoading(false);
+    }, 500);
   };
 
   return (
@@ -556,10 +559,10 @@ const MapSection = () => {
           </p>
         </div>
 
-        {/* Desktop Layout */}
-        <div className="flex flex-col gap-6 md:flex-row">
-          {/* Buttons */}
-          <div className="flex flex-wrap justify-center gap-3 md:flex-col md:justify-start md:w-1/4">
+        {/* Buttons + Map */}
+        <div className="flex flex-col md:flex-row gap-6">
+          {/* Buttons Horizontal Scroll */}
+          <div className="flex overflow-x-auto gap-3 md:flex-col md:w-1/4 md:overflow-visible">
             {areas.map((area, idx) => {
               const isActive = location === area;
               return (
@@ -568,7 +571,7 @@ const MapSection = () => {
                   onClick={() => changeLocation(area)}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`rounded-full px-4 py-2 text-sm font-semibold transition-all shadow-sm w-full md:w-auto
+                  className={`flex-shrink-0 rounded-full px-4 py-2 text-sm font-semibold transition-all shadow-sm whitespace-nowrap
                     ${isActive
                       ? "bg-primary text-white shadow-lg"
                       : "bg-primary/10 hover:bg-primary hover:text-white"
@@ -598,19 +601,19 @@ const MapSection = () => {
               )}
             </AnimatePresence>
 
+            {/* Smooth fade animation for map */}
             <motion.iframe
               key={location}
-              initial={{ opacity: 0.5, scale: 1.02 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
               title="map"
               width="100%"
               height="450"
               style={{ border: 0 }}
               loading="lazy"
-              src={`https://www.google.com/maps?q=${encodeURIComponent(
-                location
-              )}&output=embed`}
+              src={`https://www.google.com/maps?q=${encodeURIComponent(location)}&output=embed`}
             />
           </div>
         </div>
