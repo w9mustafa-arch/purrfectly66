@@ -513,67 +513,6 @@ const QuoteSection = () => {
   );
 };
 
-import { motion } from 'framer-motion';
-import { MapPin } from 'lucide-react';
-
-const deliveryZones = [
-  { name: 'Gueliz', x: 40, y: 30 },
-  { name: 'Medina', x: 60, y: 50 },
-  { name: 'Agdal', x: 50, y: 70 },
-  { name: 'Hivernage', x: 70, y: 25 },
-  { name: 'Ménara', x: 30, y: 60 },
-];
-
-export const DeliveryMapInteractive = () => {
-  return (
-    <section
-      id="map"
-      className="relative bg-[hsl(0_0%_99%)] px-6 py-24 md:px-12 lg:px-24"
-    >
-      <div className="mx-auto max-w-7xl text-center mb-12">
-        <h2 className="font-heading text-foreground text-4xl font-bold md:text-5xl">
-          Livraison à Marrakech
-        </h2>
-        <p className="text-muted-foreground mt-2 max-w-xl mx-auto">
-          Découvrez nos zones de livraison à travers la ville
-        </p>
-      </div>
-
-      <div className="relative w-full h-[500px] rounded-2xl overflow-hidden shadow-lg">
-        {/* خريطة ثابتة كمثال */}
-        <img
-          src="/images/marrakech_map.png"
-          alt="Marrakech Map"
-          className="w-full h-full object-cover"
-        />
-
-        {/* مناطق التوصيل */}
-        {deliveryZones.map((zone, idx) => (
-          <motion.div
-            key={idx}
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.1 + idx * 0.1 }}
-            className="absolute"
-            style={{
-              top: `${zone.y}%`,
-              left: `${zone.x}%`,
-              transform: 'translate(-50%, -100%)',
-            }}
-          >
-            <div className="group relative flex flex-col items-center">
-              <MapPin className="h-8 w-8 text-red-500 drop-shadow-lg" />
-              <span className="absolute -top-8 rounded bg-white px-2 py-1 text-xs font-bold text-foreground opacity-0 group-hover:opacity-100 shadow-lg transition-opacity whitespace-nowrap">
-                {zone.name}
-              </span>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </section>
-  );
-};
-
 export const Footer = () => {
   return (
     <footer className="from-secondary/5 via-background to-primary/5 border-border/40 relative border-t bg-gradient-to-br px-6 py-16">
@@ -736,7 +675,6 @@ export default function Home() {
       <Features />
       <Community />
       <QuoteSection />
-      <DeliveryMapInteractive />  
       <section id="cta" className="px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <motion.div
