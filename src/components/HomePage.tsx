@@ -513,70 +513,62 @@ const QuoteSection = () => {
   );
 };
 
-const DeliveryMap = () => {
-  // مناطق التوصيل في مراكش
-  const areas = [
-    { name: 'Guéliz', coords: { top: '20%', left: '40%' } },
-    { name: 'Medina', coords: { top: '50%', left: '50%' } },
-    { name: 'Hivernage', coords: { top: '25%', left: '60%' } },
-    { name: 'Palmeraie', coords: { top: '10%', left: '80%' } },
-    { name: 'Sidi Youssef Ben Ali', coords: { top: '70%', left: '35%' } },
-    { name: 'Agdal', coords: { top: '60%', left: '55%' } },
-  ];
+import { motion } from 'framer-motion';
+import { MapPin } from 'lucide-react';
 
+const deliveryZones = [
+  { name: 'Gueliz', x: 40, y: 30 },
+  { name: 'Medina', x: 60, y: 50 },
+  { name: 'Agdal', x: 50, y: 70 },
+  { name: 'Hivernage', x: 70, y: 25 },
+  { name: 'Ménara', x: 30, y: 60 },
+];
+
+export const DeliveryMapInteractive = () => {
   return (
     <section
-      id="delivery-map"
+      id="map"
       className="relative bg-[hsl(0_0%_99%)] px-6 py-24 md:px-12 lg:px-24"
     >
-      <div className="mx-auto max-w-7xl text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16 space-y-4"
-        >
-          <span className="font-hand text-primary text-xl">
-            Livreur Marrakech
-          </span>
-          <h2 className="font-heading text-foreground text-4xl font-bold md:text-5xl">
-            Zones de livraison
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Nous livrons vos commandes rapidement dans toutes les principales
-            zones de Marrakech.
-          </p>
-        </motion.div>
+      <div className="mx-auto max-w-7xl text-center mb-12">
+        <h2 className="font-heading text-foreground text-4xl font-bold md:text-5xl">
+          Livraison à Marrakech
+        </h2>
+        <p className="text-muted-foreground mt-2 max-w-xl mx-auto">
+          Découvrez nos zones de livraison à travers la ville
+        </p>
+      </div>
 
-        <div className="relative mx-auto h-[500px] w-full rounded-2xl border border-border/40 bg-card shadow-lg">
-          {/* خريطة الخلفية */}
-          <img
-            src="/images/marrakech_map_placeholder.png"
-            alt="Marrakech Map"
-            className="h-full w-full rounded-2xl object-cover"
-          />
+      <div className="relative w-full h-[500px] rounded-2xl overflow-hidden shadow-lg">
+        {/* خريطة ثابتة كمثال */}
+        <img
+          src="/images/marrakech_map.png"
+          alt="Marrakech Map"
+          className="w-full h-full object-cover"
+        />
 
-          {/* علامات المناطق */}
-          {areas.map((area, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 + idx * 0.1 }}
-              className="absolute flex flex-col items-center"
-              style={{ top: area.coords.top, left: area.coords.left }}
-            >
-              <div className="flex h-5 w-5 items-center justify-center rounded-full bg-primary text-white text-xs font-bold shadow-md">
-                •
-              </div>
-              <span className="mt-1 text-xs font-semibold text-foreground bg-white/80 px-2 py-1 rounded-full shadow-sm">
-                {area.name}
+        {/* مناطق التوصيل */}
+        {deliveryZones.map((zone, idx) => (
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.1 + idx * 0.1 }}
+            className="absolute"
+            style={{
+              top: `${zone.y}%`,
+              left: `${zone.x}%`,
+              transform: 'translate(-50%, -100%)',
+            }}
+          >
+            <div className="group relative flex flex-col items-center">
+              <MapPin className="h-8 w-8 text-red-500 drop-shadow-lg" />
+              <span className="absolute -top-8 rounded bg-white px-2 py-1 text-xs font-bold text-foreground opacity-0 group-hover:opacity-100 shadow-lg transition-opacity whitespace-nowrap">
+                {zone.name}
               </span>
-            </motion.div>
-          ))}
-        </div>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </section>
   );
@@ -744,7 +736,7 @@ export default function Home() {
       <Features />
       <Community />
       <QuoteSection />
-      <DeliveryMap />  
+      <DeliveryMapInteractive />  
       <section id="cta" className="px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <motion.div
