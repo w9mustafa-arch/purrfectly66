@@ -744,6 +744,7 @@ export default function Home() {
       <Features />
       <Community />
       <QuoteSection />
+      <DeliveryMap />  
       <section id="cta" className="px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <motion.div
