@@ -410,6 +410,27 @@ const Community = () => {
         "I've never felt more zen. The community here truly understands the meow of life.",
       image: '/images/elena_rodriguez_creative_director_portrait.png',
     },
+    {
+      name: 'Sarah Chen',
+      role: 'Meditation Teacher',
+      quote:
+        'Purrfectly momo completely transformed how I view mindfulness. My cat approves too.',
+      image: '/images/sarah_chen_meditation_teacher_portrait.png',
+    },
+    {
+      name: 'Marcus Johnson',
+      role: 'Wellness Coach',
+      quote:
+        'The cat philosophy here resonates deeply. Simplicity, presence, and the power of a good nap.',
+      image: '/images/marcus_johnson_wellness_coach_portrait.png',
+    },
+    {
+      name: 'Elena Rodriguez',
+      role: 'Creative Director',
+      quote:
+        "I've never felt more zen. The community here truly understands the meow of life.",
+      image: '/images/elena_rodriguez_creative_director_portrait.png',
+    },
   ];
 
   return (
