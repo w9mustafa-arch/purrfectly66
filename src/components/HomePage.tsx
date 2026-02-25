@@ -347,7 +347,7 @@ const Features = () => {
   return (
     <section
       id="features"
-      className="relative bg-white/50 px-6 py-24 md:px-12 lg:px-24"
+      className="relative bg-black/50 px-6 py-24 md:px-12 lg:px-24"
     >
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 space-y-4 text-center">
