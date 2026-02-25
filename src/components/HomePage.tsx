@@ -513,6 +513,47 @@ const QuoteSection = () => {
   );
 };
 
+
+{/* ===== Section: Marrakech Map ===== */}
+<section
+  id="marrakech-map"
+  className="relative bg-[hsl(0_0%_99%)] px-6 py-24 md:px-12 lg:px-24 text-center"
+>
+  <div className="mx-auto max-w-7xl">
+    <h2 className="font-heading text-foreground text-3xl font-bold mb-12 md:text-4xl">
+      Zones de Livraison à Marrakech
+    </h2>
+
+    <div className="relative mx-auto w-full max-w-4xl">
+      <img
+        src="/images/marrakech_map.png"
+        alt="Marrakech Map"
+        className="w-full rounded-2xl shadow-lg"
+      />
+
+      {[
+        { name: 'Gueliz', top: '22%', left: '36%' },
+        { name: 'Medina', top: '52%', left: '50%' },
+        { name: 'Hivernage', top: '28%', left: '45%' },
+        { name: 'Agdal', top: '65%', left: '55%' },
+        { name: 'Menara', top: '70%', left: '42%' },
+      ].map((area, idx) => (
+        <div
+          key={idx}
+          className="absolute flex flex-col items-center"
+          style={{ top: area.top, left: area.left }}
+        >
+          <div className="h-4 w-4 rounded-full bg-primary animate-pulse border-2 border-white"></div>
+          <span className="mt-1 text-xs font-semibold text-foreground bg-white/80 px-2 py-1 rounded">
+            {area.name}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
 export const Footer = () => {
   return (
     <footer className="from-secondary/5 via-background to-primary/5 border-border/40 relative border-t bg-gradient-to-br px-6 py-16">
@@ -675,6 +716,7 @@ export default function Home() {
       <Features />
       <Community />
       <QuoteSection />
+      <marrakech-map />
       <section id="cta" className="px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <motion.div
