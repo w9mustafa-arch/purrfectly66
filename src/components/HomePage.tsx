@@ -513,46 +513,74 @@ const QuoteSection = () => {
   );
 };
 
+const DeliveryMap = () => {
+  // مناطق التوصيل في مراكش
+  const areas = [
+    { name: 'Guéliz', coords: { top: '20%', left: '40%' } },
+    { name: 'Medina', coords: { top: '50%', left: '50%' } },
+    { name: 'Hivernage', coords: { top: '25%', left: '60%' } },
+    { name: 'Palmeraie', coords: { top: '10%', left: '80%' } },
+    { name: 'Sidi Youssef Ben Ali', coords: { top: '70%', left: '35%' } },
+    { name: 'Agdal', coords: { top: '60%', left: '55%' } },
+  ];
 
-{/* ===== Section: Marrakech Map ===== */}
-<section
-  id="marrakech-map"
-  className="relative bg-[hsl(0_0%_99%)] px-6 py-24 md:px-12 lg:px-24 text-center"
->
-  <div className="mx-auto max-w-7xl">
-    <h2 className="font-heading text-foreground text-3xl font-bold mb-12 md:text-4xl">
-      Zones de Livraison à Marrakech
-    </h2>
-
-    <div className="relative mx-auto w-full max-w-4xl">
-      <img
-        src="/images/marrakech_map.png"
-        alt="Marrakech Map"
-        className="w-full rounded-2xl shadow-lg"
-      />
-
-      {[
-        { name: 'Gueliz', top: '22%', left: '36%' },
-        { name: 'Medina', top: '52%', left: '50%' },
-        { name: 'Hivernage', top: '28%', left: '45%' },
-        { name: 'Agdal', top: '65%', left: '55%' },
-        { name: 'Menara', top: '70%', left: '42%' },
-      ].map((area, idx) => (
-        <div
-          key={idx}
-          className="absolute flex flex-col items-center"
-          style={{ top: area.top, left: area.left }}
+  return (
+    <section
+      id="delivery-map"
+      className="relative bg-[hsl(0_0%_99%)] px-6 py-24 md:px-12 lg:px-24"
+    >
+      <div className="mx-auto max-w-7xl text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-16 space-y-4"
         >
-          <div className="h-4 w-4 rounded-full bg-primary animate-pulse border-2 border-white"></div>
-          <span className="mt-1 text-xs font-semibold text-foreground bg-white/80 px-2 py-1 rounded">
-            {area.name}
+          <span className="font-hand text-primary text-xl">
+            Livreur Marrakech
           </span>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
+          <h2 className="font-heading text-foreground text-4xl font-bold md:text-5xl">
+            Zones de livraison
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+            Nous livrons vos commandes rapidement dans toutes les principales
+            zones de Marrakech.
+          </p>
+        </motion.div>
 
+        <div className="relative mx-auto h-[500px] w-full rounded-2xl border border-border/40 bg-card shadow-lg">
+          {/* خريطة الخلفية */}
+          <img
+            src="/images/marrakech_map_placeholder.png"
+            alt="Marrakech Map"
+            className="h-full w-full rounded-2xl object-cover"
+          />
+
+          {/* علامات المناطق */}
+          {areas.map((area, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, scale: 0.5 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 + idx * 0.1 }}
+              className="absolute flex flex-col items-center"
+              style={{ top: area.coords.top, left: area.coords.left }}
+            >
+              <div className="flex h-5 w-5 items-center justify-center rounded-full bg-primary text-white text-xs font-bold shadow-md">
+                •
+              </div>
+              <span className="mt-1 text-xs font-semibold text-foreground bg-white/80 px-2 py-1 rounded-full shadow-sm">
+                {area.name}
+              </span>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export const Footer = () => {
   return (
@@ -716,7 +744,7 @@ export default function Home() {
       <Features />
       <Community />
       <QuoteSection />
-      <marrakech-map />
+      <DeliveryMap />
       <section id="cta" className="px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <motion.div
