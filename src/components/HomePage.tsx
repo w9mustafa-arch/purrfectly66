@@ -467,7 +467,7 @@ const QuoteSection = () => {
   return (
     <section
       id="wisdom"
-      className="bg-secondary/20 flex items-center justify-center px-6 py-24 text-center"
+      className="bg-[hsl(0_0%_99%)] flex items-center justify-center px-6 py-24 text-center"
     >
       <motion.div
         className="relative max-w-3xl"
