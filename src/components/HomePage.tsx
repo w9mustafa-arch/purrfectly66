@@ -433,7 +433,7 @@ const Community = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
             >
-              <div className="bg-card h-full rounded-[2rem] border-none shadow-lg transition-shadow duration-300 hover:shadow-xl">
+              <div className="bg-[hsl(0_0%_100%)] h-full rounded-[2rem] border-none shadow-lg transition-shadow duration-300 hover:shadow-xl">
                 <div className="flex h-full flex-col p-8">
                   <div className="mb-6 flex items-center gap-4">
                     <img
@@ -467,7 +467,7 @@ const QuoteSection = () => {
   return (
     <section
       id="wisdom"
-      className="bg-[hsl(0_0%_99%)] flex items-center justify-center px-6 py-24 text-center"
+      className="bg-[hsl(210_36%_91%)] flex items-center justify-center px-6 py-24 text-center"
     >
       <motion.div
         className="relative max-w-3xl"
