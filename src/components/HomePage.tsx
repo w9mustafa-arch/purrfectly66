@@ -513,36 +513,35 @@ const QuoteSection = () => {
   );
 };
 
-const DeliveryAreas = () => {
-  const [selectedArea, setSelectedArea] = useState<string | null>(null);
+const MapSection = () => {
+  const [location, setLocation] = useState("Marrakech Morocco");
 
   const areas = [
-    'Gueliz',
-    'Hivernage',
-    'Medina',
-    'Sidi Ghanem',
-    'Targa',
-    'Daoudiate',
-    'Amerchich',
-    'Semlalia',
-    'Massira',
-    'Hay Mohammadi',
-    'Izdihar',
-    'Route Casablanca',
-    'Route Safi',
-    'Palmeraie',
-    'Agdal',
-    'Bab Doukkala',
+    "Gueliz Marrakech",
+    "Medina Marrakech",
+    "Hivernage Marrakech",
+    "Targa Marrakech",
+    "Sidi Ghanem Marrakech",
+    "Amerchich Marrakech",
+    "Daoudiate Marrakech",
+    "Semlalia Marrakech",
+    "Massira Marrakech",
+    "Hay Mohammadi Marrakech",
+    "Izdihar Marrakech",
+    "Route Casablanca Marrakech",
+    "Route Safi Marrakech",
+    "Palmeraie Marrakech",
+    "Agdal Marrakech",
+    "Bab Doukkala Marrakech",
   ];
 
   return (
-    <section id="areas" className="bg-[hsl(0_0%_99%)] px-6 py-24 md:px-12 lg:px-24">
+    <section id="zones" className="bg-[hsl(0_0%_99%)] px-6 py-24 md:px-12 lg:px-24">
       <div className="mx-auto max-w-7xl">
 
-        {/* Title */}
         <div className="mb-12 text-center">
           <h2 className="font-heading text-foreground text-4xl font-bold">
-            Zones de Livraison à Marrakech
+            Zones de Livraison
           </h2>
           <p className="text-muted-foreground mt-2">
             Cliquez sur votre quartier pour vérifier la disponibilité
@@ -550,56 +549,38 @@ const DeliveryAreas = () => {
         </div>
 
         {/* Buttons */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {areas.map((area) => (
+        <div className="mb-10 flex flex-wrap justify-center gap-3">
+          {areas.map((area, idx) => (
             <button
-              key={area}
-              onClick={() => setSelectedArea(area)}
-              className={`rounded-full px-4 py-2 text-sm font-semibold transition-all shadow-sm
-                ${
-                  selectedArea === area
-                    ? 'bg-primary text-primary-foreground'
-                    : 'bg-secondary/40 hover:bg-primary/20'
-                }`}
+              key={idx}
+              onClick={() => setLocation(area)}
+              className="bg-primary/10 hover:bg-primary hover:text-white rounded-full px-4 py-2 text-sm font-semibold transition-all"
             >
-              {area}
+              {area.replace(" Marrakech", "")}
             </button>
           ))}
         </div>
 
-        {/* Map Display */}
-        <AnimatePresence mode="wait">
-          {selectedArea && (
-            <motion.div
-              key={selectedArea}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.4 }}
-              className="mx-auto max-w-3xl text-center"
-            >
-              <div className="bg-card rounded-[2rem] p-6 shadow-lg">
+        {/* Map */}
+        <div className="overflow-hidden rounded-2xl shadow-xl border border-border/40">
+          <iframe
+            title="map"
+            width="100%"
+            height="450"
+            style={{ border: 0 }}
+            loading="lazy"
+            src={`https://www.google.com/maps?q=${encodeURIComponent(
+              location
+            )}&output=embed`}
+          ></iframe>
+        </div>
 
-                {/* Map image */}
-                <img
-                  src="/images/marrakech_map.png"
-                  alt="Marrakech map"
-                  className="rounded-xl mb-6 w-full object-cover"
-                />
-
-                {/* Message */}
-                <h3 className="font-heading text-2xl font-bold text-primary">
-                  Livraison disponible à {selectedArea} ✅
-                </h3>
-
-                <p className="text-muted-foreground mt-2">
-                  Nous livrons rapidement dans cette zone 24h/24
-                </p>
-
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {/* Status */}
+        <div className="mt-6 text-center">
+          <p className="font-heading text-primary text-lg font-bold">
+            Livraison disponible à {location.replace(" Marrakech", "")} ✅
+          </p>
+        </div>
 
       </div>
     </section>
@@ -769,7 +750,7 @@ export default function Home() {
       <Features />
       <Community />
       <QuoteSection />
-      <DeliveryAreas />
+      <MapSection />
       <section id="cta" className="px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <motion.div
