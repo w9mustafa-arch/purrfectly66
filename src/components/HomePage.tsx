@@ -513,10 +513,7 @@ const QuoteSection = () => {
   );
 };
 
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
-
-const MapSectionPro = () => {
+const MapSection = () => {
   const [location, setLocation] = useState("Marrakech Morocco");
   const [loading, setLoading] = useState(false);
 
@@ -543,100 +540,125 @@ const MapSectionPro = () => {
   const changeLocation = (area: string) => {
     setLoading(true);
     setLocation(area);
-    setTimeout(() => setLoading(false), 500);
+    setTimeout(() => setLoading(false), 400);
   };
 
   return (
-    <section id="zones" className="bg-[hsl(0_0%_99%)] px-6 py-24 md:px-12 lg:px-24">
+    <section
+      id="zones"
+      className="bg-[hsl(0_0%_99%)] px-6 py-20 md:px-12 lg:px-24"
+    >
       <div className="mx-auto max-w-7xl">
+
         {/* Title */}
-        <div className="mb-12 text-center">
-          <h2 className="font-heading text-foreground text-4xl font-bold md:text-5xl">
+        <div className="mb-14 text-center">
+          <h2 className="font-heading text-3xl font-bold md:text-5xl">
             Zones de Livraison
           </h2>
-          <p className="text-muted-foreground mt-3">
-            Vérifiez rapidement si la livraison est disponible dans votre quartier
+          <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
+            Sélectionnez votre quartier pour vérifier la disponibilité du service
           </p>
         </div>
 
-        {/* Desktop Layout */}
-        <div className="flex flex-col gap-6 md:flex-row md:gap-8">
-          {/* Buttons */}
-          <div className="flex flex-wrap justify-center gap-3 md:flex-col md:w-1/4 md:justify-start
-                          md:max-h-[450px] md:overflow-y-auto">
-            {areas.map((area, idx) => {
-              const isActive = location === area;
-              return (
-                <motion.button
-                  key={idx}
-                  onClick={() => changeLocation(area)}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`rounded-full px-4 py-2 text-sm font-semibold transition-all shadow-sm
-                    ${
-                      isActive
-                        ? "bg-primary text-white shadow-lg"
-                        : "bg-primary/10 hover:bg-primary hover:text-white"
-                    }
-                  `}
-                >
-                  {area.replace(" Marrakech", "").replace(" Morocco", "")}
-                </motion.button>
-              );
-            })}
+        {/* Layout */}
+        <div className="grid gap-10 md:grid-cols-4">
+
+          {/* Areas */}
+          <div className="md:col-span-1">
+            <div className="flex gap-3 overflow-x-auto pb-4 md:flex-col md:overflow-visible">
+              {areas.map((area, idx) => {
+                const isActive = location === area;
+
+                return (
+                  <motion.button
+                    key={idx}
+                    onClick={() => changeLocation(area)}
+                    whileHover={{ scale: 1.04 }}
+                    whileTap={{ scale: 0.96 }}
+                    className={`whitespace-nowrap rounded-full px-5 py-2 text-sm font-medium transition-all duration-300
+                      ${
+                        isActive
+                          ? "bg-primary text-white shadow-lg"
+                          : "bg-white border border-border hover:bg-primary hover:text-white"
+                      }
+                    `}
+                  >
+                    {area.replace(" Marrakech", "").replace(" Morocco", "")}
+                  </motion.button>
+                );
+              })}
+            </div>
           </div>
 
-          {/* Map Container */}
-          <div className="relative overflow-hidden rounded-3xl border border-border/40 shadow-xl md:w-3/4">
-            {/* Loading Overlay */}
+          {/* Map */}
+          <div className="relative md:col-span-3">
+
             <AnimatePresence>
               {loading && (
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="absolute inset-0 z-10 flex items-center justify-center bg-white/70 backdrop-blur-sm"
+                  className="absolute inset-0 z-10 flex items-center justify-center bg-white/70 backdrop-blur-sm rounded-3xl"
                 >
-                  <div className="animate-pulse text-primary font-bold">
+                  <div className="animate-pulse text-primary font-semibold">
                     Chargement de la carte...
                   </div>
                 </motion.div>
               )}
             </AnimatePresence>
 
-            {/* Map */}
             <motion.iframe
               key={location}
-              initial={{ opacity: 0.5, scale: 1.02 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0.5 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.4 }}
               title="map"
-              width="100%"
+              className="w-full rounded-3xl shadow-xl border border-border"
               height="450"
-              style={{ border: 0 }}
               loading="lazy"
               src={`https://www.google.com/maps?q=${encodeURIComponent(
                 location
               )}&output=embed`}
-            ></motion.iframe>
+            />
           </div>
         </div>
 
-        {/* Status */}
+        {/* Status + CTA */}
         <motion.div
           key={location + "-status"}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mt-6 text-center"
+          className="mt-10 text-center space-y-4"
         >
-          <p className="font-heading text-primary text-lg font-bold">
-            Livraison disponible à {location.replace(" Marrakech", "").replace(" Morocco", "")} ✅
+          <p className="text-primary text-lg font-semibold">
+            Livraison disponible à{" "}
+            <span className="font-bold">
+              {location.replace(" Marrakech", "").replace(" Morocco", "")}
+            </span>{" "}
+            ✅
           </p>
+
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="https://wa.me/212600000000" target="_blank">
+              <button className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full font-bold shadow-lg transition-all">
+                Commander via WhatsApp
+              </button>
+            </a>
+
+            <a href="tel:+212600000000">
+              <button className="bg-primary text-primary-foreground px-8 py-3 rounded-full font-bold shadow-lg transition-all hover:bg-primary/90">
+                Appeler Maintenant
+              </button>
+            </a>
+          </div>
         </motion.div>
+
       </div>
     </section>
   );
 };
+
 
 export const Footer = () => {
   return (
@@ -800,7 +822,7 @@ export default function Home() {
       <Features />
       <Community />
       <QuoteSection />
-      <MapSectionPro />
+      <MapSection />
       <section id="cta" className="px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <motion.div
