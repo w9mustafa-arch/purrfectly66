@@ -513,74 +513,57 @@ const QuoteSection = () => {
   );
 };
 
+import { useState } from 'react';
+
 const DeliveryMap = () => {
-  // مناطق التوصيل في مراكش
+  // المناطق مع إحداثيات تقريبية (latitude, longitude)
   const areas = [
-    { name: 'Guéliz', coords: { top: '20%', left: '40%' } },
-    { name: 'Medina', coords: { top: '50%', left: '50%' } },
-    { name: 'Hivernage', coords: { top: '25%', left: '60%' } },
-    { name: 'Palmeraie', coords: { top: '10%', left: '80%' } },
-    { name: 'Sidi Youssef Ben Ali', coords: { top: '70%', left: '35%' } },
-    { name: 'Agdal', coords: { top: '60%', left: '55%' } },
+    { name: 'Guéliz', lat: 31.6315, lng: -8.0081 },
+    { name: 'Medina', lat: 31.6295, lng: -7.9811 },
+    { name: 'Hivernage', lat: 31.6255, lng: -7.9922 },
+    { name: 'Palmeraie', lat: 31.6646, lng: -7.9785 },
+    { name: 'Sidi Youssef Ben Ali', lat: 31.6260, lng: -8.0172 },
+    { name: 'Agdal', lat: 31.6180, lng: -8.0080 },
   ];
 
+  const [currentArea, setCurrentArea] = useState({ lat: 31.6295, lng: -7.9811 }); // الافتراضي: Medina
+
+  const mapSrc = `https://www.google.com/maps?q=${currentArea.lat},${currentArea.lng}&z=14&output=embed`;
+
   return (
-    <section
-      id="delivery-map"
-      className="relative bg-[hsl(0_0%_99%)] px-6 py-24 md:px-12 lg:px-24"
-    >
-      <div className="mx-auto max-w-7xl text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16 space-y-4"
-        >
-          <span className="font-hand text-primary text-xl">
-            Livreur Marrakech
-          </span>
-          <h2 className="font-heading text-foreground text-4xl font-bold md:text-5xl">
-            Zones de livraison
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Nous livrons vos commandes rapidement dans toutes les principales
-            zones de Marrakech.
-          </p>
-        </motion.div>
+    <section className="px-6 py-12 md:px-12 lg:px-24 text-center">
+      <h2 className="text-3xl font-bold mb-6">Zones de livraison à Marrakech</h2>
 
-        <div className="relative mx-auto h-[500px] w-full rounded-2xl border border-border/40 bg-card shadow-lg">
-          {/* خريطة الخلفية */}
-          <img
-            src="/images/marrakech_map_placeholder.png"
-            alt="Marrakech Map"
-            className="h-full w-full rounded-2xl object-cover"
-          />
+      {/* أزرار المناطق */}
+      <div className="mb-6 flex flex-wrap justify-center gap-3">
+        {areas.map((area) => (
+          <button
+            key={area.name}
+            onClick={() => setCurrentArea({ lat: area.lat, lng: area.lng })}
+            className="px-4 py-2 rounded-full bg-primary text-white hover:bg-primary/80 transition"
+          >
+            {area.name}
+          </button>
+        ))}
+      </div>
 
-          {/* علامات المناطق */}
-          {areas.map((area, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 + idx * 0.1 }}
-              className="absolute flex flex-col items-center"
-              style={{ top: area.coords.top, left: area.coords.left }}
-            >
-              <div className="flex h-5 w-5 items-center justify-center rounded-full bg-primary text-white text-xs font-bold shadow-md">
-                •
-              </div>
-              <span className="mt-1 text-xs font-semibold text-foreground bg-white/80 px-2 py-1 rounded-full shadow-sm">
-                {area.name}
-              </span>
-            </motion.div>
-          ))}
-        </div>
+      {/* خريطة Google Embed */}
+      <div className="relative mx-auto w-full h-[500px] rounded-2xl overflow-hidden shadow-lg border border-border/40">
+        <iframe
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          loading="lazy"
+          allowFullScreen
+          src={mapSrc}
+          title="Marrakech Delivery Map"
+        ></iframe>
       </div>
     </section>
   );
 };
+
+export default DeliveryMap;
 
 export const Footer = () => {
   return (
