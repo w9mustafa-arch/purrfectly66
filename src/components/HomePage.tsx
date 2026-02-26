@@ -1,7 +1,8 @@
+// HomePage.tsx (نسخة معدلة لـ Livreur Marrakech - خدمة توصيل)
+
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Heart,
-  Sparkles,
   Menu,
   X,
   Motorbike,
@@ -14,13 +15,14 @@ import {
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { Phone, MessageCircleMore, Hamburger, Pill, ShoppingCart, Clock } from 'lucide-react';
+
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'features', 'community', 'wisdom', 'cta'];
+      const sections = ['home', 'services', 'avis', 'zone', 'cta'];
       let current = 'home';
 
       for (const section of sections) {
@@ -40,9 +42,9 @@ const Navigation = () => {
   }, []);
 
   const navLinks = [
-    { href: '#features', label: 'Philosophy', id: 'features' },
-    { href: '#community', label: 'Community', id: 'community' },
-    { href: '#wisdom', label: 'Wisdom', id: 'wisdom' },
+    { href: '#services', label: 'Services', id: 'services' },
+    { href: '#avis', label: 'Avis clients', id: 'avis' },
+    { href: '#zone', label: 'Zone livraison', id: 'zone' },
   ];
 
   return (
@@ -82,12 +84,12 @@ const Navigation = () => {
             </motion.div>
           </a>
         ))}
-        <a href="/join">
+        <a href="https://wa.me/212600000000">
           <button
-            data-testid="button-join-nav"
+            data-testid="button-commander-nav"
             className="font-heading bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6 py-2 font-bold shadow-lg transition-all hover:scale-105 hover:shadow-xl"
           >
-            Join the Clowder
+            Commander maintenant
           </button>
         </a>
       </div>
@@ -147,7 +149,7 @@ const Navigation = () => {
               }}
             >
               <a
-                href="/join"
+                href="https://wa.me/212600000000"
                 className="block w-full"
                 onClick={() => setIsOpen(false)}
               >
@@ -156,10 +158,10 @@ const Navigation = () => {
                   whileTap={{ scale: 0.98 }}
                 >
                   <button
-                    data-testid="button-join-mobile"
+                    data-testid="button-commander-mobile"
                     className="font-heading bg-primary text-primary-foreground hover:bg-primary/90 w-full rounded-full py-4 font-medium shadow-lg transition-all hover:shadow-xl"
                   >
-                    Join the Clowder
+                    Commander maintenant
                   </button>
                 </motion.div>
               </a>
@@ -188,12 +190,12 @@ const Hero = () => {
           transition={{ duration: 0.6 }}
         >
           <span className="font-hand text-primary mb-4 inline-block -rotate-2 text-2xl">
-            Bienvenue à Marrakech!
+            Bienvenue à Marrakech !
           </span>
           <h1 className="font-heading text-foreground mb-6 text-4xl leading-[1.1] font-bold md:text-5xl">
-            Votre livreur rapide à{' '}
+            Livreur rapide{' '}
             <span className="text-foreground relative inline-block">
-              Marrakech
+              24h/24
               <svg
                 className="text-accent absolute -bottom-1 left-0 -z-10 h-3 w-full"
                 viewBox="0 0 100 10"
@@ -206,10 +208,12 @@ const Hero = () => {
                   fill="none"
                 />
               </svg>
-            </span>
+            </span>{' '}
+            à Marrakech
           </h1>
           <p className="text-muted-foreground max-w-md text-lg leading-relaxed md:text-xl">
-             Avec Livreur Marrakech, recevez vos Médicaments, Repas et Courses 24h/24 partout dans la ville.
+            Médicaments • Repas chauds • Courses & épicerie  
+            Livraison express partout dans la ville – jour et nuit
           </p>
 
           {/* Trust Badges */}
@@ -220,14 +224,10 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             {[
-              { icon: Hamburger, label: 'Repas frais', color: 'text-yellow-600' },
-              { icon: Pill, label: 'Livraison de Médicaments', color: 'text-green-600' },
-              {
-                icon: ShoppingCart,
-                label: 'Courses rapides',
-                color: 'text-purple-600',
-              },
-              { icon: Clock, label: 'Disponible 24h/24', color: 'text-red-600' },
+              { icon: Pill, label: 'Médicaments 24/7', color: 'text-green-600' },
+              { icon: Hamburger, label: 'Repas chauds', color: 'text-orange-600' },
+              { icon: ShoppingCart, label: 'Courses express', color: 'text-purple-600' },
+              { icon: Clock, label: '24h/24 – 7j/7', color: 'text-red-600' },
             ].map((badge, idx) => (
               <motion.div
                 key={idx}
@@ -255,46 +255,45 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: 'easeOut' }}
           className="relative z-10"
         >
+          {/* استبدل الصورة بصورة مناسبة للتوصيل */}
           <img
-            src="/images/cute_fluffy_cat_sleeping_on_a_cloud.png"
-            alt="Sleeping zen cat on a cloud"
+            src="/images/delivery-motorcycle-marrakech-night.png"  // ← ضع صورة حقيقية هنا
+            alt="Livreur à moto la nuit à Marrakech"
             className="h-auto w-full transform rounded-[3rem] shadow-2xl transition-transform duration-700 hover:rotate-0 md:rotate-3"
           />
 
           {/* WhatsApp Button */}
-<motion.a
-  href="https://wa.me/212600000000"
-  target="_blank"
-  animate={{ y: [0, -8, 0] }}
-  transition={{ repeat: Infinity, duration: 3.5, ease: 'easeInOut' }}
-  className="group bg-white absolute -bottom-8 -left-4 flex items-center gap-3 rounded-2xl px-5 py-3 shadow-xl border border-gray-200 md:left-10 hover:shadow-2xl hover:-translate-y-1 transition-all"
->
-  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-500 text-white">
-    <MessageCircleMore size={20} />
-  </div>
+          <motion.a
+            href="https://wa.me/212600000000"
+            target="_blank"
+            animate={{ y: [0, -8, 0] }}
+            transition={{ repeat: Infinity, duration: 3.5, ease: 'easeInOut' }}
+            className="group bg-white absolute -bottom-8 -left-4 flex items-center gap-3 rounded-2xl px-5 py-3 shadow-xl border border-gray-200 md:left-10 hover:shadow-2xl hover:-translate-y-1 transition-all"
+          >
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-500 text-white">
+              <MessageCircleMore size={20} />
+            </div>
+            <div>
+              <p className="text-sm font-bold text-gray-800">WhatsApp</p>
+              <p className="text-xs text-gray-500">Envoyer un message</p>
+            </div>
+          </motion.a>
 
-  <div>
-    <p className="text-sm font-bold text-gray-800">WhatsApp</p>
-    <p className="text-xs text-gray-500">Envoyer un message</p>
-  </div>
-</motion.a>
-
-{/* Call Button */}
-<motion.a
-  href="tel:+212600000000"
-  animate={{ y: [0, 8, 0] }}
-  transition={{ repeat: Infinity, duration: 3.5, ease: 'easeInOut', delay: 0.4 }}
-  className="group bg-white absolute -top-4 -right-4 flex items-center gap-3 rounded-2xl px-5 py-3 shadow-xl border border-gray-200 md:-right-8 hover:shadow-2xl hover:-translate-y-1 transition-all"
->
-  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500 text-white">
-    <Phone size={20} />
-  </div>
-
-  <div>
-    <p className="text-sm font-bold text-gray-800">Appeler</p>
-    <p className="text-xs text-gray-500">Disponible 24h/24</p>
-  </div>
-</motion.a>
+          {/* Call Button */}
+          <motion.a
+            href="tel:+212600000000"
+            animate={{ y: [0, 8, 0] }}
+            transition={{ repeat: Infinity, duration: 3.5, ease: 'easeInOut', delay: 0.4 }}
+            className="group bg-white absolute -top-4 -right-4 flex items-center gap-3 rounded-2xl px-5 py-3 shadow-xl border border-gray-200 md:-right-8 hover:shadow-2xl hover:-translate-y-1 transition-all"
+          >
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500 text-white">
+              <Phone size={20} />
+            </div>
+            <div>
+              <p className="text-sm font-bold text-gray-800">Appeler</p>
+              <p className="text-xs text-gray-500">Disponible 24h/24</p>
+            </div>
+          </motion.a>
         </motion.div>
       </div>
     </section>
@@ -343,43 +342,43 @@ const FeatureCard = ({
   </motion.div>
 );
 
-const Features = () => {
+const Services = () => {
   return (
     <section
-      id="features"
+      id="services"
       className="relative bg-[hsl(0_0%_99%)] px-6 py-24 md:px-12 lg:px-24"
     >
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 space-y-4 text-center">
           <span className="font-hand text-primary text-xl">
-            Why cats are gurus
+            Livraison express à Marrakech
           </span>
           <h2 className="font-heading text-foreground text-3xl font-bold md:text-4xl">
-            Nos Service
+            Nos Services 24h/24
           </h2>
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           <FeatureCard
-            title="Master of Chill"
-            desc="Learn the ancient art of doing absolutely nothing and looking fabulous while doing it."
-            img="/images/meditating_cat_illustration.png"
+            title="Médicaments & Pharmacie"
+            desc="Livraison rapide depuis les pharmacies de garde 24h/24 – ordonnances et médicaments sans ordonnance."
+            img="/images/pharmacy-delivery-bag.png"   // ← غير الصورة إلى صورة مناسبة
             delay={0.1}
-            testId="card-feature-chill"
+            testId="card-medicaments"
           />
           <FeatureCard
-            title="Playful Spirit"
-            desc="Rediscover your inner kitten. Chase dreams (and butterflies) with reckless abandon."
-            img="/images/playful_cat_illustration.png"
+            title="Repas & Restaurants"
+            desc="McDonald's, KFC, tajines, pizzas... vos plats arrivent chauds chez vous, même tard la nuit."
+            img="/images/food-delivery-motorcycle.png"
             delay={0.2}
-            testId="card-feature-playful"
+            testId="card-repas"
           />
           <FeatureCard
-            title="Soul Nourishment"
-            desc="Feed your heart with unconditional love, head bumps, and the occasional slow blink."
-            img="/images/cat_with_food_illustration.png"
+            title="Courses & Épicerie"
+            desc="Supermarchés, produits du quotidien, courses lourdes – on fait vos achats à votre place."
+            img="/images/grocery-delivery-bags.png"
             delay={0.3}
-            testId="card-feature-nourishment"
+            testId="card-courses"
           />
         </div>
       </div>
@@ -387,61 +386,38 @@ const Features = () => {
   );
 };
 
-const Community = () => {
+const AvisClients = () => {
   const testimonials = [
     {
-      name: 'Sarah Chen',
-      role: 'Meditation Teacher',
-      quote:
-        'Purrfectly momo completely transformed how I view mindfulness. My cat approves too.',
-      image: '/images/sarah_chen_meditation_teacher_portrait.png',
+      name: 'Fatima Z.',
+      role: 'Hivernage',
+      quote: 'Médicaments reçus à 3h du matin en 28 minutes, service exceptionnel !',
+      image: '/images/avatar-fatima.png',
     },
     {
-      name: 'Marcus Johnson',
-      role: 'Wellness Coach',
-      quote:
-        'The cat philosophy here resonates deeply. Simplicity, presence, and the power of a good nap.',
-      image: '/images/marcus_johnson_wellness_coach_portrait.png',
+      name: 'Youssef A.',
+      role: 'Guéliz',
+      quote: 'McDo à 1h du matin, chaud et ultra rapide. Merci beaucoup !',
+      image: '/images/avatar-youssef.png',
     },
     {
-      name: 'Elena Rodriguez',
-      role: 'Creative Director',
-      quote:
-        "I've never felt more zen. The community here truly understands the meow of life.",
-      image: '/images/elena_rodriguez_creative_director_portrait.png',
+      name: 'Amina L.',
+      role: 'Palmeraie',
+      quote: 'Courses lourdes sans bouger de chez moi, service top et fiable.',
+      image: '/images/avatar-amina.png',
     },
-    {
-      name: 'Sarah Chen',
-      role: 'Meditation Teacher',
-      quote:
-        'Purrfectly momo completely transformed how I view mindfulness. My cat approves too.',
-      image: '/images/sarah_chen_meditation_teacher_portrait.png',
-    },
-    {
-      name: 'Marcus Johnson',
-      role: 'Wellness Coach',
-      quote:
-        'The cat philosophy here resonates deeply. Simplicity, presence, and the power of a good nap.',
-      image: '/images/marcus_johnson_wellness_coach_portrait.png',
-    },
-    {
-      name: 'Elena Rodriguez',
-      role: 'Creative Director',
-      quote:
-        "I've never felt more zen. The community here truly understands the meow of life.",
-      image: '/images/elena_rodriguez_creative_director_portrait.png',
-    },
+    // يمكنك إضافة المزيد
   ];
 
   return (
-    <section id="community" className="relative bg-[hsl(0_0%_99%)] px-6 py-24 md:px-12 lg:px-24">
+    <section id="avis" className="relative bg-[hsl(0_0%_99%)] px-6 py-24 md:px-12 lg:px-24">
       <div className="mx-auto max-w-7xl">
         <div className="mb-16 space-y-4 text-center">
           <span className="font-hand text-primary text-xl">
-            Join our clowder
+            Ce que disent nos clients
           </span>
           <h2 className="font-heading text-foreground text-4xl font-bold md:text-5xl">
-            Community Stories
+            Avis Clients
           </h2>
         </div>
 
@@ -484,181 +460,35 @@ const Community = () => {
   );
 };
 
-const QuoteSection = () => {
+const ZoneLivraison = () => {
   return (
     <section
-      id="wisdom"
+      id="zone"
       className="bg-[hsl(210_36%_91%)] flex items-center justify-center px-6 py-24 text-center"
     >
       <motion.div
-        className="relative max-w-3xl"
+        className="relative max-w-4xl space-y-6"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <h3
-          data-testid="text-quote"
-          className="font-hand text-foreground/80 text-3xl leading-relaxed md:text-5xl"
-        >
-          Time spent with cats is never wasted. It is a gentle reminder that we
-          are here to be loved, and to nap.
-        </h3>
-
-        <div className="font-heading text-primary mt-8 font-bold">
-          — Sigmund Freud (probably)
+        <h2 className="font-heading text-foreground text-4xl font-bold md:text-5xl">
+          Nous couvrons tout Marrakech
+        </h2>
+        <p className="text-muted-foreground text-xl leading-relaxed">
+          Guéliz • Hivernage • Médina • Palmeraie • Targa • Daoudiate • Massira • Agdal...
+        </p>
+        <div className="flex justify-center">
+          <Compass className="h-24 w-24 text-primary" />
         </div>
+        <p className="text-muted-foreground text-lg">
+          Livraison express dans toute la ville – 24h/24 et 7j/7
+        </p>
       </motion.div>
     </section>
   );
 };
-
-const MapSection = () => {
-  const [location, setLocation] = useState("Marrakech Morocco");
-  const [loading, setLoading] = useState(false);
-
-  const areas = [
-    "Marrakech Morocco",
-    "Gueliz Marrakech",
-    "Medina Marrakech",
-    "Hivernage Marrakech",
-    "Targa Marrakech",
-    "Sidi Ghanem Marrakech",
-    "Amerchich Marrakech",
-    "Daoudiate Marrakech",
-    "Semlalia Marrakech",
-    "Massira Marrakech",
-    "Hay Mohammadi Marrakech",
-    "Izdihar Marrakech",
-    "Route Casablanca Marrakech",
-    "Route Safi Marrakech",
-    "Palmeraie Marrakech",
-    "Agdal Marrakech",
-    "Bab Doukkala Marrakech",
-  ];
-
-  const changeLocation = (area: string) => {
-    setLoading(true);
-    setLocation(area);
-    setTimeout(() => setLoading(false), 400);
-  };
-
-  return (
-    <section
-      id="zones"
-      className="bg-[hsl(0_0%_99%)] px-6 py-20 md:px-12 lg:px-24"
-    >
-      <div className="mx-auto max-w-7xl">
-
-        {/* Title */}
-        <div className="mb-14 text-center">
-          <h2 className="font-heading text-3xl font-bold md:text-5xl">
-            Zones de Livraison
-          </h2>
-          <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
-            Sélectionnez votre quartier pour vérifier la disponibilité du service
-          </p>
-        </div>
-
-        {/* Layout */}
-        <div className="grid gap-10 md:grid-cols-4">
-
-          {/* Areas */}
-          <div className="md:col-span-1">
-            <div className="flex gap-3 overflow-x-auto pb-4 md:flex-col md:overflow-visible">
-              {areas.map((area, idx) => {
-                const isActive = location === area;
-
-                return (
-                  <motion.button
-                    key={idx}
-                    onClick={() => changeLocation(area)}
-                    whileHover={{ scale: 1.04 }}
-                    whileTap={{ scale: 0.96 }}
-                    className={`whitespace-nowrap rounded-full px-5 py-2 text-sm font-medium transition-all duration-300
-                      ${
-                        isActive
-                          ? "bg-primary text-white shadow-lg"
-                          : "bg-white border border-border hover:bg-primary hover:text-white"
-                      }
-                    `}
-                  >
-                    {area.replace(" Marrakech", "").replace(" Morocco", "")}
-                  </motion.button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Map */}
-          <div className="relative md:col-span-3">
-
-            <AnimatePresence>
-              {loading && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="absolute inset-0 z-10 flex items-center justify-center bg-white/70 backdrop-blur-sm rounded-3xl"
-                >
-                  <div className="animate-pulse text-primary font-semibold">
-                    Chargement de la carte...
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            <motion.iframe
-              key={location}
-              initial={{ opacity: 0.5 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.4 }}
-              title="map"
-              className="w-full rounded-3xl shadow-xl border border-border"
-              height="450"
-              loading="lazy"
-              src={`https://www.google.com/maps?q=${encodeURIComponent(
-                location
-              )}&output=embed`}
-            />
-          </div>
-        </div>
-
-        {/* Status + CTA */}
-        <motion.div
-          key={location + "-status"}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mt-10 text-center space-y-4"
-        >
-          <p className="text-primary text-lg font-semibold">
-            Livraison disponible à{" "}
-            <span className="font-bold">
-              {location.replace(" Marrakech", "").replace(" Morocco", "")}
-            </span>{" "}
-            ✅
-          </p>
-
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="https://wa.me/212600000000" target="_blank">
-              <button className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full font-bold shadow-lg transition-all">
-                Commander via WhatsApp
-              </button>
-            </a>
-
-            <a href="tel:+212600000000">
-              <button className="bg-primary text-primary-foreground px-8 py-3 rounded-full font-bold shadow-lg transition-all hover:bg-primary/90">
-                Appeler Maintenant
-              </button>
-            </a>
-          </div>
-        </motion.div>
-
-      </div>
-    </section>
-  );
-};
-
 
 export const Footer = () => {
   return (
@@ -680,12 +510,11 @@ export const Footer = () => {
               </h3>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Find your zen, one breath at a time. Meditate with your inner cat
-              and discover peace within.
+              Votre service de livraison express 24h/24 à Marrakech – médicaments, repas & courses.
             </p>
           </motion.div>
 
-          {/* Center Column: Links by Category */}
+          {/* Center Column: Links */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -693,69 +522,44 @@ export const Footer = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="space-y-6"
           >
-            {/* Learn */}
             <div className="space-y-3">
               <div className="text-primary flex items-center gap-2">
                 <BookOpen className="h-5 w-5" />
-                <span className="font-heading text-sm font-bold">Learn</span>
+                <span className="font-heading text-sm font-bold">Infos</span>
               </div>
               <div className="flex flex-col gap-2 pl-7">
-                <a
-                  href="/guide"
-                  data-testid="link-footer-guide"
-                  className="text-muted-foreground hover:text-primary w-fit text-sm transition-colors"
-                >
-                  Getting Started
+                <a href="/comment-ca-marche" className="text-muted-foreground hover:text-primary w-fit text-sm transition-colors">
+                  Comment ça marche
                 </a>
-                <a
-                  href="/faq"
-                  data-testid="link-footer-faq"
-                  className="text-muted-foreground hover:text-primary w-fit text-sm transition-colors"
-                >
+                <a href="/faq" className="text-muted-foreground hover:text-primary w-fit text-sm transition-colors">
                   FAQ
                 </a>
               </div>
             </div>
 
-            {/* Community */}
             <div className="space-y-3">
               <div className="text-primary flex items-center gap-2">
                 <Users className="h-5 w-5" />
-                <span className="font-heading text-sm font-bold">
-                  Community
-                </span>
+                <span className="font-heading text-sm font-bold">Contact</span>
               </div>
               <div className="flex flex-col gap-2 pl-7">
-                <a
-                  href="/contact"
-                  data-testid="link-footer-contact"
-                  className="text-muted-foreground hover:text-primary w-fit text-sm transition-colors"
-                >
-                  Contact Us
+                <a href="/contact" className="text-muted-foreground hover:text-primary w-fit text-sm transition-colors">
+                  Nous contacter
                 </a>
-                <a
-                  href="/about"
-                  data-testid="link-footer-about-community"
-                  className="text-muted-foreground hover:text-primary w-fit text-sm transition-colors"
-                >
-                  About Us
+                <a href="/about" className="text-muted-foreground hover:text-primary w-fit text-sm transition-colors">
+                  À propos
                 </a>
               </div>
             </div>
 
-            {/* Legal */}
             <div className="space-y-3">
               <div className="text-primary flex items-center gap-2">
                 <Lock className="h-5 w-5" />
-                <span className="font-heading text-sm font-bold">Legal</span>
+                <span className="font-heading text-sm font-bold">Légal</span>
               </div>
               <div className="flex flex-col gap-2 pl-7">
-                <a
-                  href="/privacy"
-                  data-testid="link-footer-privacy"
-                  className="text-muted-foreground hover:text-primary w-fit text-sm transition-colors"
-                >
-                  Privacy Policy
+                <a href="/privacy" className="text-muted-foreground hover:text-primary w-fit text-sm transition-colors">
+                  Politique de confidentialité
                 </a>
               </div>
             </div>
@@ -771,30 +575,26 @@ export const Footer = () => {
           >
             <div className="space-y-2">
               <h4 className="font-heading text-foreground font-bold">
-                Join Our Community
+                Prêt à commander ?
               </h4>
               <p className="text-muted-foreground text-sm">
-                Connect with thousands of zen-seekers on your mindfulness
-                journey.
+                Contactez-nous via WhatsApp ou téléphone – disponible 24h/24
               </p>
             </div>
-            <a href="/join" className="w-full">
+            <a href="https://wa.me/212600000000" className="w-full">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                data-testid="button-footer-cta"
                 className="bg-primary text-primary-foreground hover:bg-primary/90 w-full rounded-full px-6 py-3 font-bold shadow-lg transition-all hover:shadow-xl"
               >
-                Join the Clowder
+                Passer commande
               </motion.button>
             </a>
           </motion.div>
         </div>
 
-        {/* Divider */}
         <div className="border-border/40 my-8 border-t" />
 
-        {/* Bottom: Copyright */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -802,11 +602,10 @@ export const Footer = () => {
           className="text-muted-foreground/60 flex flex-col items-center justify-between gap-4 text-center text-xs md:flex-row"
         >
           <p>
-            &copy; {new Date().getFullYear()} Fauzira Alpiandi. All rights
-            reserved.
+            © {new Date().getFullYear()} Livreur Marrakech. Tous droits réservés.
           </p>
           <p className="flex items-center justify-center gap-1">
-            Built with <Heart className="h-3 w-3 text-red-400" /> for cat lovers
+            Livraison rapide <Heart className="h-3 w-3 text-red-400" /> Marrakech
           </p>
         </motion.div>
       </div>
@@ -819,10 +618,9 @@ export default function Home() {
     <div className="bg-background selection:bg-primary/20 selection:text-primary-foreground min-h-screen">
       <Navigation />
       <Hero />
-      <Features />
-      <Community />
-      <QuoteSection />
-      <MapSection />
+      <Services />
+      <AvisClients />
+      <ZoneLivraison />
       <section id="cta" className="px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <motion.div
@@ -833,40 +631,37 @@ export default function Home() {
             className="mb-12 space-y-4 text-center"
           >
             <h2 className="font-heading text-foreground text-4xl font-bold md:text-5xl">
-              Ready to find your zen?
+              Prêt à recevoir votre commande ?
             </h2>
             <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
-              Choose your path and start your zen journey today
+              Contactez-nous maintenant – 24h/24
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {[
               {
-                id: 'cta-start-app',
-                title: 'Start Meditating',
-                description:
-                  'Meditate with your inner cat. Start with our breathing timer and find your calm.',
-                href: '/app',
-                testId: 'button-cta-app',
-                icon: <Heart className="text-primary h-8 w-8" />,
+                id: 'cta-whatsapp',
+                title: 'Via WhatsApp',
+                description: 'Envoyez votre commande directement sur WhatsApp – réponse rapide.',
+                href: 'https://wa.me/212600000000',
+                testId: 'button-cta-whatsapp',
+                icon: <MessageCircleMore className="text-primary h-8 w-8" />,
               },
               {
-                id: 'cta-guide',
-                title: 'Start Learning',
-                description:
-                  'Learn the fundamentals of meditation. A step-by-step guide for beginners and beyond.',
-                href: '/guide',
-                testId: 'button-cta-guide',
-                icon: <BookOpen className="text-primary h-8 w-8" />,
+                id: 'cta-call',
+                title: 'Par téléphone',
+                description: 'Appelez-nous 24h/24 pour passer votre commande.',
+                href: 'tel:+212600000000',
+                testId: 'button-cta-call',
+                icon: <Phone className="text-primary h-8 w-8" />,
               },
               {
-                id: 'cta-explore',
-                title: 'Explore More',
-                description:
-                  'Discover zen tips, breathing techniques, and daily affirmations to deepen your practice.',
-                href: '/explore',
-                testId: 'button-cta-explore',
+                id: 'cta-zone',
+                title: 'Vérifier la zone',
+                description: 'Découvrez si nous livrons dans votre quartier à Marrakech.',
+                href: '#zone',
+                testId: 'button-cta-zone',
                 icon: <Compass className="text-primary h-8 w-8" />,
               },
             ].map((cta, idx) => (
@@ -893,7 +688,7 @@ export default function Home() {
                     data-testid={cta.testId}
                     className="bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer rounded-full px-6 py-2 text-sm font-bold shadow-md transition-colors"
                   >
-                    Get Started
+                    Commencer
                   </button>
                 </a>
               </motion.div>
