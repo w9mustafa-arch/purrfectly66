@@ -54,7 +54,7 @@ const Navigation = () => {
   <img
   src="/images/logo.svg"
   alt="Livreur Marrakech Logo"
-  className="w-40 h-auto object-contain"
+  className="h-12 w-auto object-contain"
 />
 </a>
 
