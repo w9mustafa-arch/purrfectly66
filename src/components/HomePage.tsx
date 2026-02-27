@@ -52,7 +52,7 @@ const Navigation = () => {
   className="flex items-center transition-opacity hover:opacity-80"
 >
   <img
-    src="/images/logo.png"
+    src="/images/logo.svg"
     alt="Livreur Marrakech Logo"
     className="h-10 w-auto object-contain"
   />
@@ -529,7 +529,7 @@ export const Footer = () => {
           >
             <div className="flex items-center gap-3">
   <img
-    src="/images/logo.png"
+    src="/images/logo.svg"
     alt="Livreur Marrakech Logo"
     className="h-8 w-auto object-contain"
   />
