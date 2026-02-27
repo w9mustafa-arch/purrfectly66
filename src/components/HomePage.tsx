@@ -54,7 +54,7 @@ const Navigation = () => {
   <img
     src="/images/logo.png"
     alt="Livreur Marrakech Logo"
-    className="h-12 w-auto object-contain"
+    className="h-10 w-auto object-contain"
   />
 </a>
 
@@ -531,7 +531,7 @@ export const Footer = () => {
   <img
     src="/images/logo.png"
     alt="Livreur Marrakech Logo"
-    className="h-10 w-auto object-contain"
+    className="h-8 w-auto object-contain"
   />
 </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
