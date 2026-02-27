@@ -52,10 +52,10 @@ const Navigation = () => {
   className="flex items-center transition-opacity hover:opacity-80"
 >
   <img
-    src="/images/logo.svg"
-    alt="Livreur Marrakech Logo"
-    className="h-10 w-auto object-contain"
-  />
+  src="/images/logo.svg"
+  alt="Livreur Marrakech Logo"
+  className="w-40 h-auto object-contain"
+/>
 </a>
 
       {/* Desktop Nav */}
