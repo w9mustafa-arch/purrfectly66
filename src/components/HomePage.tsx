@@ -48,14 +48,18 @@ const Navigation = () => {
   return (
     <nav className="bg-background/80 border-border/40 relative sticky top-0 z-50 flex w-full items-center justify-between border-b px-6 py-6 shadow-sm backdrop-blur-lg md:px-12">
       <a
-        href="/"
-        className="text-primary flex items-center gap-3 transition-opacity hover:opacity-80"
-      >
-        <Motorbike className="h-8 w-8" />
-        <span className="font-heading text-foreground text-2xl font-bold">
-          Livreur Marrakech
-        </span>
-      </a>
+  href="/"
+  className="text-primary flex items-center gap-3 transition-opacity hover:opacity-80"
+>
+  <img
+    src="/images/logo.png"
+    alt="Livreur Marrakech Logo"
+    className="h-10 w-auto object-contain"
+  />
+  <span className="font-heading text-foreground text-2xl font-bold">
+    Livreur Marrakech
+  </span>
+</a>
 
       {/* Desktop Nav */}
       <div className="hidden items-center gap-8 font-medium md:flex">
@@ -527,11 +531,15 @@ export const Footer = () => {
             className="flex flex-col justify-center space-y-3"
           >
             <div className="flex items-center gap-3">
-              <Motorbike className="text-primary h-7 w-7" />
-              <h3 className="font-heading text-foreground text-lg font-bold">
-                Livreur Marrakech
-              </h3>
-            </div>
+  <img
+    src="/images/logo.png"
+    alt="Livreur Marrakech Logo"
+    className="h-8 w-auto object-contain"
+  />
+  <h3 className="font-heading text-foreground text-lg font-bold">
+    Livreur Marrakech
+  </h3>
+</div>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Find your zen, one breath at a time. Meditate with your inner cat
               and discover peace within.
