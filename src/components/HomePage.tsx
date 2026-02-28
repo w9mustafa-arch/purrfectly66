@@ -176,7 +176,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative flex min-h-[90vh] flex-col items-center overflow-hidden px-6 py-10 md:flex-row md:px-12 lg:px-24"
+      className="relative flex min-h-[90vh] flex-col items-center overflow-hidden px-6 py-8 md:flex-row md:px-12 lg:px-24"
     >
       {/* Decorative Blobs */}
       <div className="bg-primary/10 absolute top-[-10%] left-[-10%] -z-10 h-[500px] w-[500px] rounded-full blur-3xl" />
