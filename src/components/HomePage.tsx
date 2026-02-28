@@ -191,7 +191,7 @@ const Hero = () => {
           <span className="font-hand text-primary mb-4 inline-block -rotate-2 text-2xl">
             Bienvenue à Marrakech!
           </span>
-          <h1 className="font-heading text-foreground mb-6 text-3xl sm:text-4xl md:text-5xl leading-[1.15] font-extrabold">
+          <h1 className="font-heading text-foreground mb-6 text-2xl sm:text-4xl md:text-5xl leading-[1.15] font-extrabold">
             Votre Livreur à Marrakech – Rapide, Fiable, Disponible{' '}
             <span className="text-foreground relative inline-block">
               24h/24
