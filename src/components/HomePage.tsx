@@ -192,7 +192,7 @@ const Hero = () => {
             Bienvenue à Marrakech!
           </span>
           <h1 className="font-heading text-foreground mb-6 text-3xl leading-[1.1] font-bold md:text-5xl">
-            Votre Livreur à Marrakech – Disponible{' '}
+            Votre Livreur à Marrakech Disponible{' '}
             <span className="text-foreground relative inline-block">
               24h/24
               <svg
