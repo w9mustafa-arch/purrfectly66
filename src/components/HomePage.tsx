@@ -323,7 +323,7 @@ const FeatureCard = ({
     whileHover={{ y: -10 }}
     data-testid={testId}
   >
-    <div className="bg-card h-full overflow-hidden rounded-xl border-none shadow-lg transition-shadow duration-300 hover:shadow-xl">
+    <div className="bg-card h-full overflow-hidden rounded-[10px] border border-gray-200 shadow-lg transition-shadow duration-300 hover:shadow-xl">
       <div className="flex h-full flex-col p-0">
         <div className="bg-secondary/30 flex h-48 items-center justify-center p-8">
           <motion.img
