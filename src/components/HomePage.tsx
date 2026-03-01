@@ -516,7 +516,7 @@ const QuoteSection = () => {
 
 export const Footer = () => {
   return (
-    <footer className="bg-foreground text-background border-border/40 relative border-t px-6 py-16">
+    <footer className="bg-foreground text-white border-border/40 relative border-t px-6 py-16">
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-8 lg:gap-12">
           {/* Left Column: Brand */}
